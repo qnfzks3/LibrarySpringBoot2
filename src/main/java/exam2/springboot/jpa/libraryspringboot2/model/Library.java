@@ -26,8 +26,8 @@ public class Library {
     private String addr;
     private String phone;
     private String homepage;
-    private double lat;
-    private double lon;
+    private String lat;
+    private String lon;
     private String regdate;
 
 }
