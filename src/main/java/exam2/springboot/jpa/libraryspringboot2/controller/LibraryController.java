@@ -22,6 +22,12 @@ public class LibraryController {
         if (cpg==null || cpg==0) cpg=1;
 
         mv.addObject("lblist",lbsrv.readLibrary(cpg));
+        mv.addObject("cpg",cpg);
+        mv.addObject("cntpg",lbsrv.countLibrary());
+        mv.addObject("stpg",(cpg-1)/10*10 +1);
+
+
+
     //html에 lblist로 만들었으니까 여기에 넘겨주기위해 이름을 써줌
         mv.setViewName("list");
         return mv;

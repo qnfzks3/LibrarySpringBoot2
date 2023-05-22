@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 
 import java.util.List;
+import java.util.Map;
 
 
 @Repository("lbdao")
@@ -26,5 +27,10 @@ public class LibraryDAOImpl implements LibraryDAO{
         return libraryRepository.findAll(paging).getContent();
     }
 
+    @Override
+    public int countLibrary() {
 
+
+        return libraryRepository.countLibraryBy();
+    }
 }

@@ -22,6 +22,8 @@ public class LibraryServiceImpl implements LibraryService{
         // 소스안에서는 0부터 시작이기 때문에 첫번째 데이터 화면을 출력하기위해 -1을 해준다.
     }
 
-
-
+    @Override
+    public int countLibrary() {
+        return lbdao.countLibrary();   //dao 호출 숫자 출력
+    }
 }
