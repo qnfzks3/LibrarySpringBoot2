@@ -15,8 +15,11 @@ public interface LibraryRepository extends PagingAndSortingRepository<Library,Lo
     Page findAll(Pageable paging);    //page 으로 전체를 가져와라   , page 클래스
 
 
+  /*
     @Query("select ceil(count (lbno)/25) from Library ")
     int countLibraryBy();
+
+    */
     
 
 

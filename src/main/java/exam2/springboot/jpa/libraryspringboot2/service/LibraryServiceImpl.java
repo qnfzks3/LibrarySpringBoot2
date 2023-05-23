@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
+
 
 @Service("lbsrv")
 public class LibraryServiceImpl implements LibraryService{
@@ -16,14 +18,16 @@ public class LibraryServiceImpl implements LibraryService{
 
 
     @Override
-    public List<Library> readLibrary(int cpg) {
+    public Map<String , Object> readLibrary(int cpg) {
         return lbdao.selectLibrary(cpg - 1);
         //페이지 클레스로 레포지토리에서 데이터 가져왔지만 cpg를 그냥쓰면 안나온다. 홈페이지 상에선 1부터 시작하기때문
         // 소스안에서는 0부터 시작이기 때문에 첫번째 데이터 화면을 출력하기위해 -1을 해준다.
     }
 
+    /*
     @Override
     public int countLibrary() {
         return lbdao.countLibrary();   //dao 호출 숫자 출력
     }
+    */
 }

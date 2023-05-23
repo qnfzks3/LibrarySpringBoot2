@@ -1,11 +1,14 @@
 package exam2.springboot.jpa.libraryspringboot2.controller;
 
 
+
 import exam2.springboot.jpa.libraryspringboot2.service.LibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Map;
 
 @Controller
 public class LibraryController {
@@ -21,9 +24,11 @@ public class LibraryController {
 
         if (cpg==null || cpg==0) cpg=1;
 
-        mv.addObject("lblist",lbsrv.readLibrary(cpg));
+        Map<String , Object> libs = lbsrv.readLibrary(cpg);
+
+        mv.addObject("lblist",libs.get("lblist"));
         mv.addObject("cpg",cpg);
-        mv.addObject("cntpg",lbsrv.countLibrary());
+        mv.addObject("cntpg",libs.get("cntpg"));
         mv.addObject("stpg",(cpg-1)/10*10 +1);
 
 

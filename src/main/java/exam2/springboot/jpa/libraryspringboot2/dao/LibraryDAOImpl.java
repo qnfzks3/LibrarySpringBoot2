@@ -9,8 +9,10 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 
 @Repository("lbdao")
@@ -21,16 +23,27 @@ public class LibraryDAOImpl implements LibraryDAO{
 
 
     @Override
-    public List<Library> selectLibrary(int cpg) {
+    public Map<String, Object> selectLibrary(int cpg) {
         Pageable paging = PageRequest.of(cpg,25, Sort.by("lbno").descending());
 
-        return libraryRepository.findAll(paging).getContent();
+        List<Library>  lblist=libraryRepository.findAll(paging).getContent();
+
+        int cntpg = libraryRepository.findAll(paging).getTotalPages();
+
+        Map<String,Object> libs = new HashMap<>();
+
+        libs.put("lblist",lblist); //html로 보냄
+        libs.put("cutpg",cntpg);
+
+        return libs;
     }
 
+    /*
     @Override
     public int countLibrary() {
 
 
         return libraryRepository.countLibraryBy();
     }
+    */
 }
